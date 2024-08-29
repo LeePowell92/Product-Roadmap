@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Roadmap Tree</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .branch {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .branch div {
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin: 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .completed {
+            background-color: #a0d995;
+        }
+        .in-progress {
+            background-color: #ffdd57;
+        }
+        .planned {
+            background-color: #f2a3a5;
+        }
+        .branch:before {
+            content: '';
+            height: 2px;
+            background-color: #000;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .branch:after {
+            content: '';
+            height: 2px;
+            background-color: #000;
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .feature-details {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tree-container">
+        <div class="branch">
+            <div class="completed" onclick="toggleDetails('details1')">Feature 1
+                <div id="details1" class="feature-details">Detailed information about Feature 1.</div>
+            </div>
+            <div class="completed" onclick="toggleDetails('details2')">Feature 2
+                <div id="details2" class="feature-details">Detailed information about Feature 2.</div>
+            </div>
+            <div class="completed" onclick="toggleDetails('details3')">Feature 3
+                <div id="details3" class="feature-details">Detailed information about Feature 3.</div>
+            </div>
+        </div>
+        <div class="branch">
+            <div class="in-progress" onclick="toggleDetails('details4')">Feature 4
+                <div id="details4" class="feature-details">Detailed information about Feature 4.</div>
+            </div>
+            <div class="in-progress" onclick="toggleDetails('details5')">Feature 5
+                <div id="details5" class="feature-details">Detailed information about Feature 5.</div>
+            </div>
+        </div>
+        <div class="branch">
+            <div class="planned" onclick="toggleDetails('details6')">Feature 6
+                <div id="details6" class="feature-details">Detailed information about Feature 6.</div>
+            </div>
+            <div class="planned" onclick="toggleDetails('details7')">Feature 7
+                <div id="details7" class="feature-details">Detailed information about Feature 7.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            const isVisible = details.style.display === 'block';
+            document.querySelectorAll('.feature-details').forEach(detail => detail.style.display = 'none');
+            details.style.display = isVisible ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>
+
